@@ -3,15 +3,6 @@ library(tidyverse)
 library(magrittr)
 
 #### Functions ####
-Elo_Probability = function(score1, score2){
-  # This function returns the probability a team will win based on both team's scores
-  Prob = 1 / (1 + 10 ^ ((score2 - score1) / 400))
-  
-  return.list = list(Ratings = c(score1, score2), Probability = Prob)
-  return(return.list)
-}
-
-
 Create_Player = function(Player){
   # Set initial values
   Name = deparse(substitute(Player))
@@ -40,7 +31,18 @@ Create_Player = function(Player){
 }
 
 
+Elo_Probability = function(score1, score2){
+  # This function returns the probability a team will win based on both team's scores
+  # It takes two teams scores and returns list of teams scores as well as the Probability Team1 wins
+  Prob = 1 / (1 + 10 ^ ((score2 - score1) / 400))
+  
+  return.list = list(Ratings = c(score1, score2), Probability = Prob)
+  return(return.list)
+}
+
+
 get_Elo = function(Player){
+  # Gets Elo Rating for individual player and returns vector of the 3 game modes
   Name = deparse(substitute(Player))
   if(Name %in% names(Player.List)){
     Name = Name
@@ -48,22 +50,21 @@ get_Elo = function(Player){
     Name = Player
   }
   
-  Elo.df = Player.List %>% extract2(Name) %>% extract2('Elo')
-  HP.df = Elo.df %>% extract2(1)
-  SND.df = Elo.df %>% extract2(2)
-  Control.df = Elo.df %>% extract2(3)
+  Elo.df = Player.List %>% extract2(Name) %>% extract2('Elo') %>% map(2)
+  HP.Elo = Elo.df %>% extract2(1)
+  SND.Elo = Elo.df %>% extract2(2)
+  Control.Elo = Elo.df %>% extract2(3)
   
-  Elo.Vec = c(HP.df[nrow(HP.df), 2], SND.df[nrow(SND.df), 2], Control.df[nrow(Control.df), 2])
+  Elo.Vec = c(last(HP.Elo), last(SND.Elo), last(Control.Elo))
   
   return(Elo.Vec)
 }
 
 
 get_wElo = function(Player){
-  # Must have Player.List loaded
+  # Gets wElo for each individual player and returns that single numeric
   # CHANGE PLAYER LIST IF PLAYER DATABASE HAS DIFFERENT NAME
   
-  # Need if else for for-loop in wElo_Standings()
   Name = deparse(substitute(Player))
   if(Name %in% names(Player.List)){
     Name = Name
@@ -108,6 +109,35 @@ get_TeamElo = function(players_names){
   return(all.elo)
 }
 
+update_PlayerElo = function(Player, elo.change, opponent){
+  Name = deparse(substitute(Player))
+  if(Name %in% names(Player.List)){
+    Name = Name
+  } else {
+    Name = Player
+  }
+  
+  # set up data.frames
+  num.games = length(elo.change)
+  elo.index = c(1, 2, 3, 1, 2)[1:num.games]
+  d = Sys.Date()
+  
+  
+  for(i in 1:num.games){
+    df = Player.List %>% extract2(Name) %>% extract2('Elo') %>% extract2(elo.index[i])
+    prev.elo = get_Elo(Name)[elo.index[i]]
+    new.elo = prev.elo + elo.change[i]
+    
+    date.col = c(df[, 'Date'], d)
+    elo.col = c(df[,'Elo'], new.elo)
+    df.rownames = c(rownames(df), paste(d, opponent, paste0('Map', i)))
+    
+    new.df = cbind.data.frame(Date = date.col, Elo = elo.col)
+    rownames(new.df) = df.rownames
+    
+    Player.List[[Name]][['Elo']][[elo.index[i]]] <<- new.df
+  }
+}
 
 Series = function(file_path){
   # only put something by wins
@@ -156,34 +186,19 @@ Series = function(file_path){
   t1.change = map(elo.change, 1) %>% unlist()
   t2.change = map(elo.change, 2) %>% unlist()
   
-  
-  
-  
-  return(elo.change)
+  for(i in t1.players){
+    update_PlayerElo(i, t1.change, teams[2])
+  }
+  for(j in t2.players){
+    update_PlayerElo(j, t2.change, teams[1])
+  }
+  return(team1.elo)
 }
 
+Elo_Probability(c(10, 20, 30), c(30, 20, 10))
+test = Series('C:/Users/franc/Downloads/test geng uyu 2-3  - Sheet1.csv')
 
 
-#Player.List = list(Mustang = Create_Player(SRMustang35))
-test = Series('../../Downloads/test geng uyu 2-3  - Sheet1.csv')
-Series('../../Downloads/test lg optic 3-0 - Sheet1.csv') # put the zeros in for LG so not working totally correct
-
-
-#### Notes/Testing ####
-Elo_Probability(1400, 1000)
-# Set players to 1500
-# Have team Elo be average of players
-# k = 32
-# Scale amount by COD Rating (If i can)
-
-test1 = Create_Player(Maux)
-test2 = Create_Player(Mayhem)
-test3 = Create_Player(Royalty)
-Player.List = list(Maux = test1, Mayhem = test2, Royalty = test3)
-# Use these two lines to reorder lists of players alphabetically
-Player.List %>% map(1) %>% unlist() %>% order() -> index
-Player.List[index]
-# need to see if this works
-
-
-
+#### Ideas
+# Reupdate elo probability based on games played in the series
+# Add date functionality so duplicate row names do not appear (opponent column?)
