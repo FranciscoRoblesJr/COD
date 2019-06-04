@@ -12,7 +12,7 @@ Create_Player = function(Player){
   } else {
     Name = Name
   }
-  d = Sys.Date()
+  d = as.Date('2019-02-03')
   HP_Elo = 1500
   SnD_Elo = 1500
   Control_Elo = 1500
@@ -75,11 +75,10 @@ get_TeamElo = function(players_names){
 }
 
 ### Update Player Elo for Series ###
-update_PlayerElo = function(teams, all_players, results, place){
+update_PlayerElo = function(teams, all_players, results, place, d){
   # set up data.frames
   num.games = length(results) / 2
   elo.index = c(1, 2, 3, 1, 2)[1:num.games]
-  d = Sys.Date()
   t1.players = all_players[1:5]
   t2.players = all_players[6:10]
   
@@ -118,10 +117,11 @@ update_PlayerElo = function(teams, all_players, results, place){
   return(elo.list)
 }
 
-Series = function(file_path, place){
+Series = function(file_path, place, d = Sys.Date()){
   # only put something by wins
   series = read.csv(file_path, header = F)
   place = deparse(substitute(place))
+  d = as.Date(d)
   
   
   # get series data
@@ -143,7 +143,7 @@ Series = function(file_path, place){
     }
   }
   
-  Match.Elo.Results = update_PlayerElo(teams = teams, all_players = players, results = results, place = place)
+  Match.Elo.Results = update_PlayerElo(teams, players, results, place, d)
   
   # Create object that saves Match Elo Results and have it save directly in funciton
   # Wont need to return anything at that point
