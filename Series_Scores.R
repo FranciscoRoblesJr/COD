@@ -2,7 +2,7 @@ source('Functions/Elo_Functions.R')
 Player.List = readRDS('Objects/Player.List')
 
 
-#### PL Week 1 - Week 4
+#### PL Week 1 - Week 4 ####
 # Week 1
 Series('Data/Pro League/PL - 1_rec_rr.csv', Pro_League)
 Series('Data/Pro League/PL - 2_mid_og.csv', Pro_League)
@@ -33,11 +33,42 @@ Series('Data/Pro League/PL - 25_rr_uyu.csv', Pro_League)
 Series('Data/Pro League/PL - 26_geng_mid.csv', Pro_League)
 Series('Data/Pro League/PL - 27_eg_rec.csv', Pro_League)
 Series('Data/Pro League/PL - 28_lg_og.csv', Pro_League)
+# Week 3
+Series('Data/Pro League/PL - 29_eu_heretics.csv', Pro_League)
+Series('Data/Pro League/PL - 30_denial_e6.csv', Pro_League)
+Series('Data/Pro League/PL - 31_denial_heretics.csv', Pro_League)
+Series('Data/Pro League/PL - 32_xlg_nv.csv', Pro_League)
+Series('Data/Pro League/PL - 33_e6_eu.csv', Pro_League)
+Series('Data/Pro League/PL - 34_100t_splyce.csv', Pro_League)
+Series('Data/Pro League/PL - 35_100t_denial.csv', Pro_League)
+Series('Data/Pro League/PL - 36_e6_heretics.csv', Pro_League)
+Series('Data/Pro League/PL - 37_eu_xlg.csv', Pro_League)
+Series('Data/Pro League/PL - 38_splyce_nv.csv', Pro_League)
+Series('Data/Pro League/PL - 39_xlg_heretics.csv', Pro_League)
+Series('Data/Pro League/PL - 40_denial_nv.csv', Pro_League)
+Series('Data/Pro League/PL - 41_e6_splyce.csv', Pro_League)
+Series('Data/Pro League/PL - 42_100t_eu.csv', Pro_League)
+# Week 4
+Series('Data/Pro League/PL - 43_100t_nv.csv', Pro_League)
+Series('Data/Pro League/PL - 44_xlg_splyce.csv', Pro_League)
+Series('Data/Pro League/PL - 45_denial_eu.csv', Pro_League)
+Series('Data/Pro League/PL - 46_100t_xlg.csv', Pro_League)
+Series('Data/Pro League/PL - 47_heretics_splyce.csv', Pro_League)
+Series('Data/Pro League/PL - 48_e6_nv.csv', Pro_League)
+Series('Data/Pro League/PL - 49_eu_nv.csv', Pro_League)
+Series('Data/Pro League/PL - 50_e6_xlg.csv', Pro_League)
+Series('Data/Pro League/PL - 51_denial_splyce.csv', Pro_League)
+Series('Data/Pro League/PL - 52_100t_heretics.csv', Pro_League)
+Series('Data/Pro League/PL - 53_denial_xlg.csv', Pro_League)
+Series('Data/Pro League/PL - 54_heretics_nv.csv', Pro_League)
+Series('Data/Pro League/PL - 55_100t_e6.csv', Pro_League)
+Series('Data/Pro League/PL - 56_eu_splyce.csv', Pro_League)
 
-#### Fort Worth
+
+#### Fort Worth ####
 Series('Data/Fort Worth/FW - 1_e6_rr.csv', Fort_Worth)
-Series('Data/Fort Worth/FW - 2_midnight_splyce.csv', Fort_Worth)
-Series('Data/Fort Worth/FW - 3_excel_lg.csv', Fort_Worth)
+Series('Data/Fort Worth/FW - 2_midt_splyce.csv', Fort_Worth)
+Series('Data/Fort Worth/FW - 3_xlg_lg.csv', Fort_Worth)
 #Series('Data/Fort Worth/FW - 4_100t_eg.csv', Fort_Worth)
 Series('Data/Fort Worth/FW - 5_geng_heretics.csv', Fort_Worth)
 Series('Data/Fort Worth/FW - 6_eu_nv.csv', Fort_Worth)
