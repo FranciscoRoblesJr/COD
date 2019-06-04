@@ -3,7 +3,36 @@ Player.List = readRDS('Objects/Player.List')
 
 
 #### PL Week 1 - Week 4
-
+# Week 1
+Series('Data/Pro League/PL - 1_rec_rr.csv', Pro_League)
+Series('Data/Pro League/PL - 2_mid_og.csv', Pro_League)
+Series('Data/Pro League/PL - 3_eg_mid.csv', Pro_League)
+Series('Data/Pro League/PL - 4_geng_rr.csv', Pro_League)
+Series('Data/Pro League/PL - 5_og_uyu.csv', Pro_League)
+Series('Data/Pro League/PL - 6_lg_rec.csv', Pro_League)
+Series('Data/Pro League/PL - 7_geng_rec.csv', Pro_League)
+Series('Data/Pro League/PL - 8_lg_uyu.csv', Pro_League)
+Series('Data/Pro League/PL - 9_mid_rr.csv', Pro_League)
+Series('Data/Pro League/PL - 10_eg_og.csv', Pro_League)
+Series('Data/Pro League/PL - 11_mid_uyu.csv', Pro_League)
+Series('Data/Pro League/PL - 12_og_rec.csv', Pro_League)
+Series('Data/Pro League/PL - 13_lg_red.csv', Pro_League)
+Series('Data/Pro League/PL - 14_eg_geng.csv', Pro_League)
+# Week 2
+Series('Data/Pro League/PL - 15_eg_uyu.csv', Pro_League)
+Series('Data/Pro League/PL - 16_geng_lg.csv', Pro_League)
+Series('Data/Pro League/PL - 17_mid_rec.csv', Pro_League)
+Series('Data/Pro League/PL - 18_geng_uyu.csv', Pro_League)
+Series('Data/Pro League/PL - 19_og_rr.csv', Pro_League)
+Series('Data/Pro League/PL - 20_eg_lg.csv', Pro_League)
+Series('Data/Pro League/PL - 21_rec_uyu.csv', Pro_League)
+Series('Data/Pro League/PL - 22_eg_rr.csv', Pro_League)
+Series('Data/Pro League/PL - 23_lg_mid.csv', Pro_League)
+Series('Data/Pro League/PL - 24_geng_og.csv', Pro_League)
+Series('Data/Pro League/PL - 25_rr_uyu.csv', Pro_League)
+Series('Data/Pro League/PL - 26_geng_mid.csv', Pro_League)
+Series('Data/Pro League/PL - 27_eg_rec.csv', Pro_League)
+Series('Data/Pro League/PL - 28_lg_og.csv', Pro_League)
 
 #### Fort Worth
 Series('Data/Fort Worth/FW - 1_e6_rr.csv', Fort_Worth)
