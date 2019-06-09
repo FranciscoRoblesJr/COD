@@ -19,9 +19,12 @@ Create_Player = function(Player){
   
   
   # Compile into lists
-  hp.df = data.frame(Date = d, Place = '', Opponent = '', Map = '', Elo = HP_Elo, stringsAsFactors = F)
-  snd.df = data.frame(Date = d, Place = '', Opponent = '', Map = '', Elo = SnD_Elo,  stringsAsFactors = F)
-  control.df = data.frame(Date = d, Place = '', Opponent = '', Map = '', Elo = Control_Elo,  stringsAsFactors = F)
+  hp.df = data.frame(Date = d, Place = '', Team = '', Opponent = '', Map = '', Result = '', Elo = HP_Elo, 
+                     stringsAsFactors = F)
+  snd.df = data.frame(Date = d, Place = '', Team = '', Opponent = '', Map = '', Result = '', Elo = SnD_Elo, 
+                      stringsAsFactors = F)
+  control.df = data.frame(Date = d, Place = '', Team = '', Opponent = '', Map = '', Result = '', Elo = Control_Elo, 
+                          stringsAsFactors = F)
   elo.list = list(Hardpoint = hp.df, 'Search and Destroy' = snd.df, Control = control.df)
   
   
@@ -91,6 +94,7 @@ update_PlayerElo = function(teams, all_players, results, place, d){
     elo.list[[i]] = Elo_Probability(team1.elo, team2.elo)
     prob = c(elo.list[[i]]$Probability, 1 - elo.list[[i]]$Probability)
     winner = results[c((2*i)-1, 2*i)]
+    elo.list[[i]][['Result']] = winner
     change = k*(winner - prob)
     
     # Change the player elo's
@@ -100,7 +104,13 @@ update_PlayerElo = function(teams, all_players, results, place, d){
       prev.elo = get_Elo(t1.players[j]) %>% extract2(elo.index[i])
       new.elo = prev.elo + change[1]
       
-      new.row = list(Date = d, Place = place, Opponent = teams[2], Map = paste0('Map', i), Elo = new.elo)
+      if(winner[1] == 1){
+        team1.win = 'W'
+      } else {
+        team1.win = 'L'
+      }
+      new.row = list(Date = d, Place = place, Team = teams[1], Opponent = teams[2], Map = paste0('Map', i), 
+                     Result = team1.win, Elo = new.elo)
       df = rbind.data.frame(df, new.row)
       Player.List[[t1.players[j]]][['Elo']][[elo.index[i]]] <<- df
     }
@@ -109,7 +119,13 @@ update_PlayerElo = function(teams, all_players, results, place, d){
       prev.elo = get_Elo(t2.players[l]) %>% extract2(elo.index[i])
       new.elo = prev.elo + change[2]
       
-      new.row = list(Date = d, Place = place, Opponent = teams[1], Map = paste0('Map', i), Elo = new.elo)
+      if(winner[2] == 1){
+        team2.win = 'W'
+      } else {
+        team2.win = 'L'
+      }
+      new.row = list(Date = d, Place = place, Team = teams[2], Opponent = teams[1], Map = paste0('Map', i), 
+                     Result = team2.win, Elo = new.elo)
       df = rbind.data.frame(df, new.row, stringsAsFactors = F)
       Player.List[[t2.players[l]]][['Elo']][[elo.index[i]]] <<- df
     }
@@ -117,10 +133,10 @@ update_PlayerElo = function(teams, all_players, results, place, d){
   return(elo.list)
 }
 
-Series = function(file_path, place, d = Sys.Date()){
+Series = function(file_path, d = Sys.Date()){
   # only put something by wins
   series = read.csv(file_path, header = F)
-  place = deparse(substitute(place))
+  place = file_path %>% str_split('/') %>% map(2) %>% unlist()
   d = as.Date(d)
   
   
@@ -185,8 +201,57 @@ wElo_Standings = function(){
   return(Elo.df)
 }
 
+get_PlayerData = function(Player, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
+  Name = deparse(substitute(Player))
+  if(Name %in% names(Player.List)){
+    Name = Name
+  } else {
+    Name = Player
+  }
+  beg.d = as.Date(beg.d)
+  d = as.Date(d)
+  
+  df.list = Player.List %>% extract2(Name) %>% extract2('Elo')
+  modes = c(names(df.list), 'wElo')
+  df.list = df.list %>% map(~extract(.x, c('Date', 'Elo')))
+  dates = seq(beg.d, d, by="days")
+  
+  player.df = data.frame()
+  for(i in 1:length(dates)){
+    filt.df = map(df.list, ~filter(.x, Date <= dates[i])) %>% map(~extract(.x, 'Elo'))
+    elo.day = map(filt.df, ~tail(.x, 1)) %>% unlist()
+    welo.day = (elo.day %*% c(2, 2, 1)) / 5
+    elo.day = c(elo.day, welo.day)
+    day = rep(as.Date(dates[i]), 4)
+    day.df = data.frame(Date = day, Mode = modes, Elo = elo.day)
+    player.df = rbind.data.frame(player.df, day.df)
+  }
+  rownames(player.df) = NULL
+  player.df$Mode = factor(player.df$Mode, levels = c('Hardpoint', 'Search and Destroy', 'Control', 'wElo'))
+  
+  
+  return.list = list(Player = Name, Data = player.df)
+  return(return.list)
+}
 
+Player_Graph = function(Player, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
+  Name = deparse(substitute(Player))
+  if(Name %in% names(Player.List)){
+    Name = Name
+  } else {
+    Name = Player
+  }
+  beg.d = as.Date(beg.d)
+  d = as.Date(d)
+  
+  player.df = get_PlayerData(Name, beg.d, d) %>% extract2('Data')
+  
+  elo.graph = ggplot(player.df, aes(Date, Elo, color = Mode)) + geom_line(size = 2) + 
+    labs(title = paste(Name, 'Elo Rating from', beg.d, 'to', d), color = 'Mode')
+  
+  return(elo.graph)
+}
 
-#### Ideas
-# Reupdate elo probability based on games played in the series
-# Add date functionality so duplicate row names do not appear (opponent column?)
+Player_Graph(Royalty)
+test$Hardpoint$Date %>% unique()
+test.plot$Data %>% filter(Date <= '2019-04-02' & Mode != 'wElo')
