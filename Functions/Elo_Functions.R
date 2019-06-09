@@ -246,12 +246,50 @@ Player_Graph = function(Player, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
   
   player.df = get_PlayerData(Name, beg.d, d) %>% extract2('Data')
   
-  elo.graph = ggplot(player.df, aes(Date, Elo, color = Mode)) + geom_line(size = 2) + 
+  elo.graph = ggplot(player.df, aes(Date, Elo, color = Mode)) + geom_line(size = 2, alpha = 0.6) + 
     labs(title = paste(Name, 'Elo Rating from', beg.d, 'to', d), color = 'Mode')
   
   return(elo.graph)
 }
 
-Player_Graph(Royalty)
-test$Hardpoint$Date %>% unique()
-test.plot$Data %>% filter(Date <= '2019-04-02' & Mode != 'wElo')
+Create_Team = function(Name, Players){
+  Name = deparse(substitute(Name))
+  Team.List[[Name]] <<- list(Team = Name, Players = Players)
+}
+
+Team_Graph = function(team, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
+  Team = deparse(substitute(team))
+  beg.d = as.Date(beg.d)
+  d = as.Date(d)
+  players = Team.List %>% extract2(Team) %>% extract2('Players')
+  dates = seq(beg.d, d, by="days")
+  
+  
+  player.list = list()
+  for(i in players){
+    player.list[[i]] = get_PlayerData(i, beg.d, d) %>% extract2('Data')
+  }
+  
+  modes = c('Hardpoint', 'Search and Destroy', 'Control', 'wElo')
+  total.df = data.frame()
+  for(i in 1:length(dates)){
+    HP.day = player.list %>% map(~filter(.x, Date == dates[i] & Mode == 'Hardpoint')) %>% map(~extract(.x, 'Elo')) %>% unlist() %>% mean()
+    SnD.day = player.list %>% map(~filter(.x, Date == dates[i] & Mode == 'Search and Destroy')) %>% map(~extract(.x, 'Elo')) %>% unlist() %>% mean()
+    Control.day = player.list %>% map(~filter(.x, Date == dates[i] & Mode == 'Control')) %>% map(~extract(.x, 'Elo')) %>% unlist() %>% mean()
+    wElo.day = player.list %>% map(~filter(.x, Date == dates[i] & Mode == 'wElo')) %>% map(~extract(.x, 'Elo')) %>% unlist() %>% mean()
+    
+    elo.day = c(HP.day, SnD.day, Control.day, wElo.day)
+    day = rep(dates[i], 4)
+    
+    
+    day.df = data.frame(Date = day, Mode = modes, Elo = elo.day)
+    total.df = rbind.data.frame(total.df, day.df)
+  }
+  total.df$Mode = factor(total.df$Mode, levels = c('Hardpoint', 'Search and Destroy', 'Control', 'wElo'))
+  
+  elo.plot = ggplot(total.df, aes(Date, Elo, color = Mode)) + geom_line(size = 2, alpha = 0.6) +
+    labs(title = paste(Team, 'Elo Rating from', beg.d, 'to', d), color = 'Mode')
+  
+  return(elo.plot)
+}
+

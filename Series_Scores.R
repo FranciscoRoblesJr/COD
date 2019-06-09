@@ -1,5 +1,6 @@
 source('Functions/Elo_Functions.R')
 Player.List = readRDS('Objects/Player.List')
+Team.List = readRDS('Objects/Team.List')
 
 
 #### PL Week 1 - Week 4 ####
