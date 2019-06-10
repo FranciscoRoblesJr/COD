@@ -293,3 +293,65 @@ Team_Graph = function(team, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
   return(elo.plot)
 }
 
+Series_Simulation = function(team1, team2){
+  team1 = deparse(substitute(team1))
+  team2 = deparse(substitute(team2))
+  
+  
+  team1.players = Team.List %>% extract2(team1) %>% extract2('Players')
+  team2.players = Team.List %>% extract2(team2) %>% extract2('Players')
+  
+  
+  team1.elo = get_TeamElo(team1.players)
+  team2.elo = get_TeamElo(team2.players)
+  
+  
+  hp.prob = Elo_Probability(team1.elo[1], team2.elo[1]) %>% extract2('Probability')
+  snd.prob = Elo_Probability(team1.elo[2], team2.elo[2]) %>% extract2('Probability')
+  control.prob = Elo_Probability(team1.elo[3], team2.elo[3]) %>% extract2('Probability')
+  prob.vec = c(hp.prob, snd.prob, control.prob, hp.prob, snd.prob)
+  
+  results.list = list()
+  k = 1000
+  for(i in 1:k){
+    team1.wins = NULL
+    team2.wins = NULL
+    while(sum(team1.wins) < 3 & sum(team2.wins) < 3){
+      games.played = length(team1.wins)
+      outcome = rbernoulli(1, prob.vec[(games.played + 1)])
+      t1.outcome = ifelse(outcome == TRUE, 1, 0)
+      t2.outcome = ifelse(outcome == TRUE, 0, 1)
+      
+      team1.wins = c(team1.wins, t1.outcome)
+      team2.wins = c(team2.wins, t2.outcome)
+    }
+    series.df = rbind.data.frame(team1.wins, team2.wins)
+    rownames(series.df) = c(team1, team2)
+    for(j in 1:ncol(series.df)){
+      colnames(series.df)[j] = paste0('Map', j)
+    }
+    results.list[[i]] = series.df
+  }
+  
+  
+  transition.df = results.list %>% lapply(rowSums)
+  results.df = do.call(rbind.data.frame, transition.df)
+  colnames(results.df) = c(team1, team2)
+  
+  
+  t1.30 = results.df[c(results.df[,1] == 3 & results.df[,2] == 0),] %>% nrow()
+  t1.31 = results.df[c(results.df[,1] == 3 & results.df[,2] == 1),] %>% nrow()
+  t1.32 = results.df[c(results.df[,1] == 3 & results.df[,2] == 2),] %>% nrow()
+  t2.30 = results.df[c(results.df[,1] == 0 & results.df[,2] == 3),] %>% nrow()
+  t2.31 = results.df[c(results.df[,1] == 1 & results.df[,2] == 3),] %>% nrow()
+  t2.32 = results.df[c(results.df[,1] == 2 & results.df[,2] == 3),] %>% nrow()
+  results.vec = (c(t1.30, t1.31, t1.32, t2.32, t2.31, t2.30) / k) %>% round(2)
+  names(results.vec) = c(paste(team1, '3-0'), paste(team1, '3-1'), paste(team1, '3-2'),
+                       paste(team2, '3-2'), paste(team2, '3-1'), paste(team2, '3-0'))
+  
+  
+  return.list = list(Series = results.list, Outcome = results.df, Summary = results.vec)
+  return(return.list)
+ 
+}
+
