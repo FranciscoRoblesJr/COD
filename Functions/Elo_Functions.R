@@ -310,6 +310,11 @@ Series_Simulation = function(team1, team2){
   snd.prob = Elo_Probability(team1.elo[2], team2.elo[2]) %>% extract2('Probability')
   control.prob = Elo_Probability(team1.elo[3], team2.elo[3]) %>% extract2('Probability')
   prob.vec = c(hp.prob, snd.prob, control.prob, hp.prob, snd.prob)
+  t2.prob.vec = 1-prob.vec
+  elo.df = rbind.data.frame(team1.elo, round(prob.vec[1:3], 3), team2.elo, round(t2.prob.vec[1:3], 3))
+  rownames(elo.df) = c(team1, paste(team1, 'Prob'), team2, paste(team2, 'Prob'))
+  colnames(elo.df) = c('HP', 'SND', 'Control')
+  
   
   results.list = list()
   k = 10000
@@ -352,7 +357,7 @@ Series_Simulation = function(team1, team2){
   names(results.winner) = c(team1, team2)
   
   
-  return.list = list(Series = results.list, Outcome = results.df, Summary = results.vec, Winner = results.winner)
+  return.list = list(Series = results.list, Outcome = results.df, Summary = list(Summary = results.vec, Winner = results.winner, Elo = elo.df))
   return(return.list)
  
 }
