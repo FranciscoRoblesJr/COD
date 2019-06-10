@@ -312,7 +312,7 @@ Series_Simulation = function(team1, team2){
   prob.vec = c(hp.prob, snd.prob, control.prob, hp.prob, snd.prob)
   
   results.list = list()
-  k = 1000
+  k = 10000
   for(i in 1:k){
     team1.wins = NULL
     team2.wins = NULL
@@ -348,9 +348,11 @@ Series_Simulation = function(team1, team2){
   results.vec = (c(t1.30, t1.31, t1.32, t2.32, t2.31, t2.30) / k) %>% round(2)
   names(results.vec) = c(paste(team1, '3-0'), paste(team1, '3-1'), paste(team1, '3-2'),
                        paste(team2, '3-2'), paste(team2, '3-1'), paste(team2, '3-0'))
+  results.winner = c(sum(results.vec[1:3]), sum(results.vec[4:6]))
+  names(results.winner) = c(team1, team2)
   
   
-  return.list = list(Series = results.list, Outcome = results.df, Summary = results.vec)
+  return.list = list(Series = results.list, Outcome = results.df, Summary = results.vec, Winner = results.winner)
   return(return.list)
  
 }
