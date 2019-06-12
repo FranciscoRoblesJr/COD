@@ -246,7 +246,7 @@ Player_Graph = function(Player, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
   
   player.df = get_PlayerData(Name, beg.d, d) %>% extract2('Data')
   
-  elo.graph = ggplot(player.df, aes(Date, Elo, color = Mode)) + geom_line(size = 2, alpha = 0.6) + 
+  elo.graph = ggplot(player.df, aes(Date, Elo, color = Mode)) + geom_line(size = 1.5, alpha = 0.6) + 
     labs(title = paste(Name, 'Elo Rating from', beg.d, 'to', d), color = 'Mode')
   
   return(elo.graph)
@@ -287,8 +287,10 @@ Team_Graph = function(team, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
   }
   total.df$Mode = factor(total.df$Mode, levels = c('Hardpoint', 'Search and Destroy', 'Control', 'wElo'))
   
-  elo.plot = ggplot(total.df, aes(Date, Elo, color = Mode)) + geom_line(size = 2, alpha = 0.6) +
-    labs(title = paste(Team, 'Elo Rating from', beg.d, 'to', d), color = 'Mode')
+  Team_Name = Team.List %>% extract2(Team) %>% extract2('Team')
+  
+  elo.plot = ggplot(total.df, aes(Date, Elo, color = Mode)) + geom_line(size = 1.5, alpha = 0.6) +
+    labs(title = paste(Team_Name, 'Elo Rating from', beg.d, 'to', d), color = 'Mode')
   
   return(elo.plot)
 }
@@ -304,6 +306,11 @@ Series_Simulation = function(team1, team2){
   
   team1.elo = get_TeamElo(team1.players)
   team2.elo = get_TeamElo(team2.players)
+  team1.welo = (team1.elo %*% c(2, 2, 1)) / 5
+  team2.welo = (team2.elo %*% c(2, 2, 1)) / 5
+  welo.vec = c(team1.welo, team2.welo)
+  names(welo.vec) = c(team1, team2)
+  
   
   
   hp.prob = Elo_Probability(team1.elo[1], team2.elo[1]) %>% extract2('Probability')
@@ -357,8 +364,31 @@ Series_Simulation = function(team1, team2){
   names(results.winner) = c(team1, team2)
   
   
-  return.list = list(Series = results.list, Outcome = results.df, Summary = list(Summary = results.vec, Winner = results.winner, Elo = elo.df))
+  return.list = list(Series = results.list, Outcome = results.df, 
+                     Summary = list(Summary = results.vec, Winner = results.winner, Elo = elo.df, wElo = welo.vec))
   return(return.list)
  
+}
+
+Team_wElo_Standings = function(){
+  player.standings = wElo_Standings()
+  teams = Team.List
+  
+  standings.df = data.frame()
+  for(i in 1:length(Team.List)){
+    team = teams[[i]] %>% extract2('Team')
+    players = teams[[i]] %>% extract2('Players')
+    logo.id = teams[[i]] %>% extract2('Logo.ID')
+    team = paste(logo.id, team, '|')
+    team.welo = player.standings %>% filter(Player %in% players) %>% pull(wElo) %>% mean()
+    team.vec = list(Team = team, wElo = team.welo)
+    
+    standings.df = rbind.data.frame(standings.df, team.vec, stringsAsFactors = F)
+  }
+  standings.df = standings.df %>% arrange(desc(wElo))
+  standings.df$wElo = round(standings.df$wElo,0)
+  colnames(standings.df) = c(paste('Team', '|'), 'wElo')
+  
+  return(standings.df)
 }
 
