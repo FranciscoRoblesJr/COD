@@ -99,3 +99,77 @@ eg_splyce_lb %>% extract2(3) # Too close (EG 54%): Splyce in 5 or EG take the se
 # LG (1401, 1429, 1493, 1430) vs. UYU (1403, 1426, 1476, 1427)
 lg_uyu_lb = Series_Simulation(Luminosity, UYU)
 lg_uyu_lb %>% extract2(3) # Too close (50/50): System is essentially saying every map is coinflip
+
+
+
+# LB R2
+# eU (1576, 1568, 1563, 1570) vs. Units (1438, 1551, 1433, 1482)
+eu_units_lb = Series_Simulation(eUnited, Denial)
+eu_units_lb %>% extract2(3) # eU win w/ 72% Probability, eU 3-1: Units might take Map 2
+
+# Heretics (1536, 1504, 1474, 1511) vs. Reciprocity (1559, 1539, 1470, 1533)
+heretics_rec_lb = Series_Simulation(Heretics, Reciprocity)
+heretics_rec_lb %>% extract2(3) # Rec win w/ 55%, Rec 3-1: Could be any of the maps
+
+# Elevate (1465, 1543, 1429, 1489) vs. Splcye(1421, 1528, 1509, 1481)
+elevate_splyce_lb = Series_Simulation(Elevate, Splyce)
+elevate_splyce_lb %>% extract2(3) # Too Close (Splyce 53%): If Elevate do well in HP, they win
+
+# FaZe (1623, 1443, 1562, 1539) vs. LG (1431, 1430, 1476, 1440)
+faze_lg_lb = Series_Simulation(FaZe, Luminosity)
+faze_lg_lb %>% extract2(3) # FaZe 74%, FaZe 3-1
+
+
+
+
+# WB R2
+# E6 (1529, 1528, 1558, 1534) vs. GenG (1569, 1528, 1583, 1555)
+e6_geng_wb = Series_Simulation(Enigma6, Gen.G)
+e6_geng_wb %>% extract2(3) # Gen.G 56%, GenG 3-1: SnD 50/50, GenG have slight edge in respawns
+
+# OpTic (1643, 1621, 1584, 1622) vs. 100T (1759, 1565, 1636, 1657)
+og_100t_wb = Series_Simulation(OpTic, Hundred_Thieves)
+og_100t_wb %>% extract2(3) # 100T 59%, 100T 3-1: OpTic take SnD, if they force G5 they will win
+
+
+
+# LB R3
+# eUnited (1587, 1583, 1573, 1582) vs. Heretics (1539, 1508, 1489, 1517)
+eu_heretics_lb = Series_Simulation(eUnited, Heretics)
+eu_heretics_lb %>% extract2(3) # eU 67%, eU 3-1
+
+# Splyce (1426, 1559, 1489, 1492) vs. FaZe (1638, 1426, 1574, 1541)
+splyce_faze_lb = Series_Simulation(Splyce, FaZe)
+splyce_faze_lb %>% extract2(3) # FaZe 62%, FaZe 3-1
+
+
+
+
+# LB R4
+# OpTic (1652, 1602, 1570, 1615) vs. eUnited (1612, 1596, 1553, 1594)
+og_eu_lb = Series_Simulation(OpTic, eUnited)
+og_eu_lb %>% extract2(3) # OpTic 56% 3-1: OpTic barely get the edge. Could go either way.
+
+# E6 (1531, 1497, 1575, 1526) vs. FaZe (1645, 1448, 1586, 1555)
+e6_faze_lb = Series_Simulation(Enigma6, FaZe)
+e6_faze_lb %>% extract2(3) # FaZe 57% 3-1: FaZe SnD is questionable, but so is E6's
+
+
+
+# LB R5
+# OpTic (1650, 1618, 1585, 1624) vs. FaZe (166, 1466, 1602, 1569)
+og_faze_lb = Series_Simulation(OpTic, FaZe)
+og_faze_lb %>% extract2(3) # OpTic 64% 3-2
+
+
+# WB R3
+# 100T (1751, 1584, 1649, 1664) vs. GenG (1567, 1558, 1566, 1563)
+t100_geng_wb = Series_Simulation(Hundred_Thieves, Gen.G)
+t100_geng_wb %>% extract2(3) # 100T 74% 3-1: 100T is poised to go back-to-back
+
+
+
+# LB R6
+# GenG (1559, 1544, 1554, 1552) vs. OpTic (1620, 1636, 1602, 1623)
+geng_og_lb = Series_Simulation(Gen.G, OpTic)
+geng_og_lb %>% extract2(3) # OpTic 69%, 3-1
