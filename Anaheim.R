@@ -173,3 +173,11 @@ t100_geng_wb %>% extract2(3) # 100T 74% 3-1: 100T is poised to go back-to-back
 # GenG (1559, 1544, 1554, 1552) vs. OpTic (1620, 1636, 1602, 1623)
 geng_og_lb = Series_Simulation(Gen.G, OpTic)
 geng_og_lb %>% extract2(3) # OpTic 69%, 3-1
+
+
+
+
+# GF
+# 100T (1759, 1599, 1662, 1675) vs. GenG (1534, 1582, 1572, 1561)
+t100_geng_gf = Series_Simulation(Hundred_Thieves, Gen.G)
+t100_geng_gf %>% extract2(3)
