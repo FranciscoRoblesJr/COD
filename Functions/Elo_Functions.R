@@ -392,3 +392,22 @@ Team_wElo_Standings = function(){
   return(standings.df)
 }
 
+Team_Standings = function(){
+  teams = paste(map(Team.List, 'Logo.ID'), map(Team.List, 'Team'))
+  team.elo.list = lapply(map(Team.List, 'Players'), get_TeamElo)
+  team.elo.df = do.call(rbind, team.elo.list) %>% round() %>% as.data.frame()
+  
+  team.standings = data.frame(Team = teams, HP = team.elo.df[,1], 
+                              SnD = team.elo.df[,2], Control = team.elo.df[,3])
+  team.standings %>% mutate(wElo = round((2 * HP + 2 * SnD + Control) / 5)) -> team.standings
+  
+  team.standings %>% arrange(desc(wElo)) -> team.standings
+  
+  reddit.standings = cbind.data.frame(team.standings$Team, '|', team.standings$HP, '|', team.standings$SnD, '|', team.standings$Control, '|', team.standings$wElo)
+  colnames(reddit.standings) = c('Team', '|', 'HP', '|', 'SnD', '|', 'Control', '|', 'wElo')
+  
+  return.list = list(Standings = team.standings, Reddit = reddit.standings)
+  
+  return(return.list)
+}
+Team_Standings() %>% extract2(2)
