@@ -245,9 +245,24 @@ Player_Graph = function(Player, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
   d = as.Date(d)
   
   player.df = get_PlayerData(Name, beg.d, d) %>% extract2('Data')
+  today.df = player.df %>% filter(Date == d)
   
-  elo.graph = ggplot(player.df, aes(Date, Elo, color = Mode)) + geom_line(size = 1.5, alpha = 0.6) + 
-    labs(title = paste(Name, 'Elo Rating from', beg.d, 'to', d), color = 'Mode')
+  gg_color_hue <- function(n) {
+    hues = seq(15, 375, length = n + 1)
+    hcl(h = hues, l = 65, c = 100)[1:n]
+  }
+  gg_colors = gg_color_hue(4)
+  
+  elo.graph = ggplot(player.df, aes(Date, Elo, color = Mode)) + geom_line(size = 1, alpha = 0.6) + 
+    annotate('text', x = d, y = today.df$Elo[1], label = round(today.df$Elo[1]), hjust=0, fontface = 2, color = gg_colors[1]) +
+    annotate('text', x = d, y = today.df$Elo[2], label = round(today.df$Elo[2]), hjust=0, fontface = 2, color = gg_colors[2]) +
+    annotate('text', x = d, y = today.df$Elo[3], label = round(today.df$Elo[3]), hjust=0, fontface = 2, color = gg_colors[3]) +
+    annotate('text', x = d, y = today.df$Elo[4], label = round(today.df$Elo[4]), hjust=0, fontface = 2, color = gg_colors[4]) +
+    labs(title = paste(Name, 'Elo Rating from', beg.d, 'to', d), color = 'Mode') +
+    scale_color_discrete(labels = c(paste('HP:', round(today.df$Elo[1])), 
+                                    paste('SnD:', round(today.df$Elo[2])), 
+                                    paste('Control:', round(today.df$Elo[3])), 
+                                    paste('wElo:', round(today.df$Elo[4]))))
   
   return(elo.graph)
 }
@@ -370,28 +385,6 @@ Series_Simulation = function(team1, team2){
  
 }
 
-Team_wElo_Standings = function(){
-  player.standings = wElo_Standings()
-  teams = Team.List
-  
-  standings.df = data.frame()
-  for(i in 1:length(Team.List)){
-    team = teams[[i]] %>% extract2('Team')
-    players = teams[[i]] %>% extract2('Players')
-    logo.id = teams[[i]] %>% extract2('Logo.ID')
-    team = paste(logo.id, team, '|')
-    team.welo = player.standings %>% filter(Player %in% players) %>% pull(wElo) %>% mean()
-    team.vec = list(Team = team, wElo = team.welo)
-    
-    standings.df = rbind.data.frame(standings.df, team.vec, stringsAsFactors = F)
-  }
-  standings.df = standings.df %>% arrange(desc(wElo))
-  standings.df$wElo = round(standings.df$wElo,0)
-  colnames(standings.df) = c(paste('Team', '|'), 'wElo')
-  
-  return(standings.df)
-}
-
 Team_Standings = function(){
   teams = paste(map(Team.List, 'Logo.ID'), map(Team.List, 'Team'))
   team.elo.list = lapply(map(Team.List, 'Players'), get_TeamElo)
@@ -410,4 +403,3 @@ Team_Standings = function(){
   
   return(return.list)
 }
-Team_Standings() %>% extract2(2)
