@@ -262,7 +262,7 @@ Series('Data/Pro League/PL - 142_elevate_nv.csv', '2019-06-06')
 Series('Data/Pro League/PL - 143_eu_heretics.csv', '2019-06-06')
 Series('Data/Pro League/PL - 144_100t_splyce.csv', '2019-06-06')
 
-# Anaheim
+#### Anaheim ####
 Series('Data/Anaheim/Anaheim - 1_eg_heretics.csv', '2019-06-14')
 Series('Data/Anaheim/Anaheim - 2_og_units.csv', '2019-06-14')
 Series('Data/Anaheim/Anaheim - 3_e6_mid.csv', '2019-06-14')
@@ -309,3 +309,9 @@ Series('Data/Anaheim/Anaheim - 43_faze_og.csv', '2019-06-16')
 Series('Data/Anaheim/Anaheim - 44_100t_geng.csv', '2019-06-16')
 Series('Data/Anaheim/Anaheim - 45_geng_og.csv', '2019-06-16')
 Series('Data/Anaheim/Anaheim - 46_100t_geng.csv', '2019-06-16')
+
+#### Pro League Week 11 - Week 12 ####
+Series('Data/Pro League/PL - 145_units_uyu.csv', '2019-06-24')
+Series('Data/Pro League/PL - 146_e6_lg.csv', '2019-06-24')
+Series('Data/Pro League/PL - 147_faze_splyce.csv', '2019-06-24')
+Series('Data/Pro League/PL - 148_100t_eg.csv', '2019-06-24')
