@@ -1,0 +1,22 @@
+Player.List = readRDS('Objects/Player.List_PostAnaheim')
+Team.List = readRDS('Objects/Team.List_PostAnaheim')
+source('Functions/Elo_Functions.R')
+
+#### Pro League Week 11 - Week 12 ####
+Series('Data/Pro League/PL - 145_units_uyu.csv', '2019-06-24')
+Series('Data/Pro League/PL - 146_e6_lg.csv', '2019-06-24')
+Series('Data/Pro League/PL - 147_faze_splyce.csv', '2019-06-24')
+Series('Data/Pro League/PL - 148_100t_eg.csv', '2019-06-24')
+Series('Data/Pro League/PL - 149_e6_uyu.csv', '2019-06-25')
+Series('Data/Pro League/PL - 150_lg_units.csv', '2019-06-25')
+Series('Data/Pro League/PL - 151_100t_faze.csv', '2019-06-25')
+Series('Data/Pro League/PL - 152_eg_splyce.csv', '2019-06-25')
+Series('Data/Pro League/PL - 153_e6_faze.csv', '2019-06-26')
+Series('Data/Pro League/PL - 154_eg_units.csv', '2019-06-26')
+Series('Data/Pro League/PL - 155_splyce_uyu.csv', '2019-06-26')
+Series('Data/Pro League/PL - 156_100t_lg.csv', '2019-06-26')
+Series('Data/Pro League/PL - 157_faze_units.csv', '2019-06-27')
+Series('Data/Pro League/PL - 158_e6_eg.csv', '2019-06-27')
+Series('Data/Pro League/PL - 159_100t_uyu.csv', '2019-06-27')
+Series('Data/Pro League/PL - 160_lg_splyce.csv', '2019-06-27')
+
