@@ -259,10 +259,12 @@ Player_Graph = function(Player, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
     annotate('text', x = d, y = today.df$Elo[3], label = round(today.df$Elo[3]), hjust=0, fontface = 2, color = gg_colors[3]) +
     annotate('text', x = d, y = today.df$Elo[4], label = round(today.df$Elo[4]), hjust=0, fontface = 2, color = gg_colors[4]) +
     labs(title = paste(Name, 'Elo Rating from', beg.d, 'to', d), color = 'Mode') +
+    theme_light() +
     scale_color_discrete(labels = c(paste('HP:', round(today.df$Elo[1])), 
                                     paste('SnD:', round(today.df$Elo[2])), 
                                     paste('Control:', round(today.df$Elo[3])), 
-                                    paste('wElo:', round(today.df$Elo[4]))))
+                                    paste('wElo:', round(today.df$Elo[4])))) +
+    guides(colour = guide_legend(override.aes = list(alpha = 1)))
   
   return(elo.graph)
 }
@@ -312,16 +314,18 @@ Team_Graph = function(team, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
   }
   gg_colors = gg_color_hue(4)
   
-  elo.plot = ggplot(total.df, aes(Date, Elo, color = Mode)) + geom_line(size = 1.5, alpha = 0.6) +
+  elo.plot = ggplot(total.df, aes(Date, Elo, color = Mode)) + geom_line(size = 1, alpha = 0.6) +
     annotate('text', x = d, y = today.df$Elo[1], label = round(today.df$Elo[1]), hjust = 0, fontface = 2, color = gg_colors[1]) +
     annotate('text', x = d, y = today.df$Elo[2], label = round(today.df$Elo[2]), hjust = 0, fontface = 2, color = gg_colors[2]) +
     annotate('text', x = d, y = today.df$Elo[3], label = round(today.df$Elo[3]), hjust = 0, fontface = 2, color = gg_colors[3]) +
     annotate('text', x = d, y = today.df$Elo[4], label = round(today.df$Elo[4]), hjust = 0, fontface = 2, color = gg_colors[4]) +
     labs(title = paste(Team_Name, 'Elo Rating from', beg.d, 'to', d), color = 'Mode') +
+    theme_light() +
     scale_color_discrete(labels = c(paste('HP:', round(today.df$Elo[1])), 
                                     paste('SnD:', round(today.df$Elo[2])), 
                                     paste('Control:', round(today.df$Elo[3])), 
-                                    paste('wElo:', round(today.df$Elo[4]))))
+                                    paste('wElo:', round(today.df$Elo[4])))) +
+    guides(colour = guide_legend(override.aes = list(alpha = 1)))
   
   return(elo.plot)
 }
