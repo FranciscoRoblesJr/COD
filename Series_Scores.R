@@ -1,4 +1,4 @@
-source('Functions/Elo_Functions.R')
+#source('Functions/Elo_Functions.R')
 Player.List = readRDS('Objects/Player.List')
 Team.List = readRDS('Objects/Team.List')
 

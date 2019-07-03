@@ -7,3 +7,8 @@ for(i in 1:length(Elo.Test)){
   }
 }
 sum(Elo.SSE)
+
+# HP weight: 159/94
+# SnD weight: 4/3
+# Control weight: 1
+
