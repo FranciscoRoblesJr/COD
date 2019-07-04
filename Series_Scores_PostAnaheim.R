@@ -27,4 +27,8 @@ Series('Data/Pro League/PL - 165_heretics_mid.csv', '2019-07-02')
 Series('Data/Pro League/PL - 166_elevate_og.csv', '2019-07-02')
 Series('Data/Pro League/PL - 167_rec_nv.csv', '2019-07-02')
 Series('Data/Pro League/PL - 168_eu_geng.csv', '2019-07-02')
+Series('Data/Pro League/PL - 169_elevate_geng.csv', '2019-07-03')
+Series('Data/Pro League/PL - 170_heretics_rec.csv', '2019-07-03')
+Series('Data/Pro League/PL - 171_eu_mid.csv', '2019-07-03')
+Series('Data/Pro League/PL - 172_og_nv.csv', '2019-07-03')
 
