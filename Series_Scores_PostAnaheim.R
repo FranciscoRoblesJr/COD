@@ -31,8 +31,7 @@ Series('Data/Pro League/PL - 169_elevate_geng.csv', '2019-07-03')
 Series('Data/Pro League/PL - 170_heretics_rec.csv', '2019-07-03')
 Series('Data/Pro League/PL - 171_eu_mid.csv', '2019-07-03')
 Series('Data/Pro League/PL - 172_og_nv.csv', '2019-07-03')
-
-Series_Simulation(Elevate, Reciprocity)$Summary # 1448, 1514, Rec 67% 3-1
-Series_Simulation(Midnight, EnVy)$Summary # 1463, 1448, Mid 54% 3-2
-Series_Simulation(Gen.G, Heretics)$Summary # 1576, 1482, GenG 73% 3-0
-Series_Simulation(eUnited, OpTic)$Summary # 1597, 1576, eU 56% 3-1
+Series('Data/Pro League/PL - 173_elevate_rec.csv', '2019-07-05')
+Series('Data/Pro League/PL - 174_mid_nv.csv', '2019-07-05')
+Series('Data/Pro League/PL - 175_geng_heretics.csv', '2019-07-05')
+Series('Data/Pro League/PL - 176_eu_og.csv', '2019-07-05')
