@@ -35,3 +35,14 @@ Series('Data/Pro League/PL - 173_elevate_rec.csv', '2019-07-05')
 Series('Data/Pro League/PL - 174_mid_nv.csv', '2019-07-05')
 Series('Data/Pro League/PL - 175_geng_heretics.csv', '2019-07-05')
 Series('Data/Pro League/PL - 176_eu_og.csv', '2019-07-05')
+
+Series_Simulation(EnVy, UYU)$Twitter
+Series_Simulation(Evil_Geniuses, Enigma6)$Summary
+Series_Simulation(Midnight, Elevate)$Twitter
+Series_Simulation(Units, Luminosity)$Summary
+Series_Simulation(EnVy, Evil_Geniuses)$Twitter
+Series_Simulation(Midnight, Luminosity)$Twitter
+test = c(226, 179, 144, 67, 219, 193, 108, 154, 160, 248, 195, 156, 245, 161, 238, 207, 133,
+  165, 237, 183, 223, 235, 205, 201, 149, 175, 97, 62, 103, 66, 231, 247, 181, 173,
+  176, 209, 241, 234, 239, 114, 121, 184, 136, 189, 199, 181, 238, 193, 180, 196,
+  242, 115)

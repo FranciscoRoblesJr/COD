@@ -333,6 +333,7 @@ Team_Graph = function(team, beg.d = as.Date('2019-02-03'), d = Sys.Date()){
 Series_Simulation = function(team1, team2){
   team1 = deparse(substitute(team1))
   team2 = deparse(substitute(team2))
+  teams = c(team1, team2)
   
   
   team1.players = Team.List %>% extract2(team1) %>% extract2('Players')
@@ -398,9 +399,14 @@ Series_Simulation = function(team1, team2){
   results.winner = c(sum(results.vec[1:3]), sum(results.vec[4:6]))
   names(results.winner) = c(team1, team2)
   
+  Twitter.Tweet = writeLines(c(paste(team1, 'wElo:', round(team1.welo), 'vs.', team2, 'wElo:', round(team2.welo)),'\n',
+                  paste('Prediction:', teams[which(results.winner == max(results.winner))], 'win w/', paste0(max(results.winner)*100, '%'), 'Probability'),'\n',
+                  paste('Predicted Series Score:', names(results.vec)[which(results.vec == max(results.vec))])))
+  
   
   return.list = list(Series = results.list, Outcome = results.df, 
-                     Summary = list(Summary = results.vec, Winner = results.winner, Elo = elo.df, wElo = welo.vec))
+                     Summary = list(Summary = results.vec, Winner = results.winner, Elo = elo.df, wElo = welo.vec),
+                     Twitter = Twitter.Tweet)
   return(return.list)
   
 }
