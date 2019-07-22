@@ -1,6 +1,7 @@
 Player.List = readRDS('Objects/Player.List_PostAnaheim')
 Team.List = readRDS('Objects/Team.List_PostAnaheim')
 source('Functions/Elo_Functions.R')
+Team.List$Gen.G$Players[5] = 'Nagafen'
 
 #### Pro League Week 11 - Week 12 ####
 Series('Data/Pro League/PL - 145_units_uyu.csv', '2019-06-24')
@@ -35,14 +36,33 @@ Series('Data/Pro League/PL - 173_elevate_rec.csv', '2019-07-05')
 Series('Data/Pro League/PL - 174_mid_nv.csv', '2019-07-05')
 Series('Data/Pro League/PL - 175_geng_heretics.csv', '2019-07-05')
 Series('Data/Pro League/PL - 176_eu_og.csv', '2019-07-05')
+Series('Data/Miami/Miami - 1_units_lg.csv', '2019-07-19')
+Series('Data/Miami/Miami - 2_mid_elevate.csv', '2019-07-19')
+Series('Data/Miami/Miami - 3_eg_e6.csv', '2019-07-19')
+Series('Data/Miami/Miami - 4_nv_uyu.csv', '2019-07-19')
+Series('Data/Miami/Miami - 5_uyu_eg.csv', '2019-07-19')
+Series('Data/Miami/Miami - 6_mid_lg.csv', '2019-07-19')
+Series('Data/Miami/Miami - 7_heretics_lg.csv', '2019-07-19')
+Series('Data/Miami/Miami - 8_rec_eg.csv', '2019-07-19')
+Series('Data/Miami/Miami - 9_geng_splyce.csv', '2019-07-20')
+Series('Data/Miami/Miami - 10_100t_faze.csv', '2019-07-20')
+Series('Data/Miami/Miami - 11_eu_rec.csv', '2019-07-20')
+Series('Data/Miami/Miami - 12_lg_og.csv', '2019-07-20')
+Series('Data/Miami/Miami - 13_splyce_heretics.csv', '2019-07-20')
+Series('Data/Miami/Miami - 14_100t_eg.csv', '2019-07-20')
+Series('Data/Miami/Miami - 15_rec_splyce.csv', '2019-07-20')
+Series('Data/Miami/Miami - 16_og_100t.csv', '2019-07-20')
+Series('Data/Miami/Miami - 17_lg_faze.csv', '2019-07-20')
+Series('Data/Miami/Miami - 18_eu_geng.csv', '2019-07-20')
+Series('Data/Miami/Miami - 19_100t_geng.csv', '2019-07-20')
+Series('Data/Miami/Miami - 20_lg_rec.csv', '2019-07-20')
+Series('Data/Miami/Miami - 21_geng_rec.csv', '2019-07-21')
+Series('Data/Miami/Miami - 22_eu_faze.csv', '2019-07-21')
+Series('Data/Miami/Miami - 23_faze_geng.csv', '2019-07-21')
+Series('Data/Miami/Miami - 24_eu_geng.csv', '2019-07-21')
+Series('Data/Miami/Miami - 25_eu_geng.csv', '2019-07-21')
 
-Series_Simulation(EnVy, UYU)$Twitter
-Series_Simulation(Evil_Geniuses, Enigma6)$Summary
-Series_Simulation(Midnight, Elevate)$Twitter
-Series_Simulation(Units, Luminosity)$Summary
-Series_Simulation(EnVy, Evil_Geniuses)$Twitter
-Series_Simulation(Midnight, Luminosity)$Twitter
-test = c(226, 179, 144, 67, 219, 193, 108, 154, 160, 248, 195, 156, 245, 161, 238, 207, 133,
-  165, 237, 183, 223, 235, 205, 201, 149, 175, 97, 62, 103, 66, 231, 247, 181, 173,
-  176, 209, 241, 234, 239, 114, 121, 184, 136, 189, 199, 181, 238, 193, 180, 196,
-  242, 115)
+
+
+
+
