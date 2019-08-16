@@ -66,100 +66,100 @@ Player.List[['QwiKeR']] = Create_Player(QwiKeR)
 Player.List[['Nastie']] = Create_Player(Nastie)
 Player.List[['Chain']] = Create_Player(Chain)
 Create_Team(Celtic, c('QwiKeR', 'Seany', 'Bance', 'Nastie', 'Chain'))
-#Team.List$Celtic$Logo.ID = 
+Team.List$Celtic$Logo.ID = '[](#celtic)'
 Player.List[['Joshh']] = Create_Player(Joshh)
 Player.List[['Dqvee']] = Create_Player(Dqvee)
 Player.List[['Defrag']] = Create_Player(Defrag)
 Player.List[['Peatie']] = Create_Player(Peatie)
 Player.List[['Vortex']] = Create_Player(Vortex)
 Create_Team(WaR, c('Joshh', 'Dqvee', 'Defrag', 'Peatie', 'Vortex'))
-#Team.List$WaR$Logo.ID = 
+Team.List$WaR$Logo.ID = '[](#war)'
 Player.List[['mosh']] = Create_Player(mosh)
 Player.List[['Apox']] = Create_Player(Apox)
 Create_Team(Mazer, c('mosh', 'Apox', 'SpaceLy', 'Parzelion', 'Jetli'))
-#Team.List$Mazer$Logo.ID = 
+Team.List$Mazer$Logo.ID = '[](#mazer)'
 Player.List[['Cells']] = Create_Player(Cells)
 Player.List[['GRVTY']] = Create_Player(GRVTY)
 Player.List[['Hollow']] = Create_Player(Hollow)
 Player.List[['Vivid']] = Create_Player(Vivid)
 Player.List[['Wrecks']] = Create_Player(Wrecks)
 Create_Team(Sage, c('Cells', 'GRVTY', 'Hollow', 'Vivid', 'Wrecks'))
-#Team.List$Sage$Logo.ID = 
+Team.List$Sage$Logo.ID = '[](#sage)'
 Player.List[['detain']] = Create_Player(detain)
 Player.List[['Insight']] = Create_Player(Insight)
 Player.List[['Bidz']] = Create_Player(Bidz)
 Player.List[['Keza']] = Create_Player(Keza)
 Player.List[['CleanX']] = Create_Player(CleanX)
 Create_Team(Singularity, c('detain', 'Insight', 'Bidz', 'Keza', 'CleanX'))
-#Team.List$Singularity$Logo.ID = 
+Team.List$Singularity$Logo.ID = '[](#singularity)'
 Player.List[['Exceed']] = Create_Player(Exceed)
 Player.List[['Linney']] = Create_Player(Linney)
 Create_Team(Sicario, c('Tommey', 'Chino', 'Proto', 'Exceed', 'Linney'))
-#Team.List$Sicario$Logo.ID = 
+Team.List$Sicario$Logo.ID = '[](#sicario)'
 Player.List[['Charullz']] = Create_Player(Charullz)
 Player.List[['Destiny']] = Create_Player(Destiny)
 Player.List[['Newbz']] = Create_Player(Newbz)
 Player.List[['Vicious']] = Create_Player(Vicious)
 Player.List[['Pentagrxm']] = Create_Player(Pentagrxm)
 Create_Team(Carnage, c('Charullz', 'Destiny', 'Newbz', 'Vicious', 'Pentagrxm'))
-#Team.List$Carnage$Logo.ID = 
+Team.List$Carnage$Logo.ID = '[](#carnage)'
 Player.List[['Turnup2ez']] = Create_Player(Turnup2ez)
 Player.List[['TISCH47']] = Create_Player(TISCH47)
 Player.List[['Super']] = Create_Player(Super)
 Create_Team(Aspire, c('Fastballa', 'RobbieB3319', 'Turnup2ez', 'TISCH47', 'Super'))
-#Team.List$Aspire$Logo.ID = 
+Team.List$Aspire$Logo.ID = '[](#aspire)'
 Player.List[['Reaper']] = Create_Player(Reaper)
 Player.List[['Deelo']] = Create_Player(Deelo)
 Player.List[['Owakening']] = Create_Player(Owakening)
 Player.List[['Landxn']] = Create_Player(Landxn)
 Player.List[['Willett']] = Create_Player(Willett)
 Create_Team(Vanity, c('Reaper', 'Deelo', 'Owakening', 'Landxn', 'Willett'))
-#Team.List$Vanity$Logo.ID = 
+Team.List$Vanity$Logo.ID = '[](#vanity)'
 Player.List[['Teddyrecks']] = Create_Player(Teddyrecks)
 Player.List[['DraMa']] = Create_Player(DraMa)
 Player.List[['Ramby']] = Create_Player(Ramby)
 Player.List[['GloFrosty']] = Create_Player(GloFrosty)
 Player.List[['Demise']] = Create_Player(Demise)
-Create_Team(Fury, c('Teddyecks', 'DraMa', 'Ramby', 'GloFrosty', 'Demise'))
-#Team.List$Fury$Logo.ID = 
+Create_Team(Fury, c('Teddyrecks', 'DraMa', 'Ramby', 'GloFrosty', 'Demise'))
+Team.List$Fury$Logo.ID = '[](#fury)'
 Player.List[['Stamino']] = Create_Player(Stamino)
 Player.List[['Spoof']] = Create_Player(Spoof)
 Player.List[['Pandur']] = Create_Player(Pandur)
 Player.List[['Jintroid']] = Create_Player(Jintroid)
 Create_Team(Hybrid, c('Stamino', 'Spoof', 'Pandur', 'Beehzy', 'Jintroid'))
-#Team.List$Hybrid$Logo.ID = 
+Team.List$Hybrid$Logo.ID = '[](#hybrid)'
 Player.List[['Creza']] = Create_Player(Creza)
 Player.List[['Yako']] = Create_Player(Yako)
 Create_Team(TrainHard, c('Zeeked', 'Natshay', 'Creza', 'Yako', 'Rizk'))
-#Team.List$TrainHard$Logo.ID = 
+Team.List$TrainHard$Logo.ID = '[](#trainhard)'
 Player.List[['Glory']] = Create_Player(Glory)
 Player.List[['Gunsiii']] = Create_Player(Gunsiii)
 Player.List[['TooReal']] = Create_Player(TooReal)
 Player.List[['KlinK']] = Create_Player(KlinK)
 Player.List[['HumanJesus']] = Create_Player(HumanJesus)
 Create_Team(RBL, c('Glory', 'Gunsiii', 'TooReal', 'KlinK', 'HumanJesus'))
-#Team.List$RBL$Logo.ID = 
+Team.List$RBL$Logo.ID = '[](#rbl)'
 Player.List[['Cookie']] = Create_Player(Cookie)
 Player.List[['Phantom']] = Create_Player(Phantom)
 Player.List[['Piero']] = Create_Player(Piero)
 Player.List[['Sharko']] = Create_Player(Sharko)
 Player.List[['Pazy']] = Create_Player(Pazy)
 Create_Team(Animosity, c('Cookie', 'Phantom', 'Piero', 'Sharko', 'Pazy'))
-#Team.List$Animosity$Logo.ID = 
+Team.List$Animosity$Logo.ID = '[](#animosity)'
 Player.List[['Conor']] = Create_Player(Conor)
 Player.List[['Chaaxter']] = Create_Player(Chaaxter)
 Player.List[['Hawqeh']] = Create_Player(Hawqeh)
 Player.List[['MadCat']] = Create_Player(MadCat)
 Player.List[['Harry']] = Create_Player(Harry)
 Create_Team(Fuego, c('Conor', 'Chaaxter', 'Hawqeh', 'MadCat', 'Harry'))
-#Team.List$Fuego$Logo.ID = 
+Team.List$Fuego$Logo.ID = '[](#fuego)'
 Player.List[['Foncho']] = Create_Player(Foncho)
 Player.List[['Ryza']] = Create_Player(Ryza)
 Player.List[['Phenom']] = Create_Player(Phenom)
 Player.List[['Pure']] = Create_Player(Pure)
 Player.List[['EFatal']] = Create_Player(EFatal)
 Create_Team(LGND, c('Foncho', 'Ryza', 'Phenom', 'Pure', 'EFatal'))
-#Team.List$LGND$Logo.ID = 
+Team.List$LGND$Logo.ID = '[](#lgnd)'
 
 Series('Data/Champs/Champs - 1_fuego_geng.csv', '2019-08-14')
 Series('Data/Champs/Champs - 2_celtic_elevate.csv', '2019-08-14')
@@ -210,3 +210,11 @@ Series('Data/Champs/Champs - 46_carnage_th.csv', '2019-08-15')
 Series('Data/Champs/Champs - 47_eg_og.csv', '2019-08-15')
 Series('Data/Champs/Champs - 48_aspire_heretics.csv', '2019-08-15')
 
+Series_Simulation(eUnited, WaR)$Summary
+Series_Simulation(Splyce, Evil_Geniuses)$Summary
+Series_Simulation(Singularity, Sicario)$Twitter
+Series_Simulation(EnVy, Units)$Twitter
+Series_Simulation(FaZe, Reciprocity)$Twitter
+Series_Simulation(Hundred_Thieves, Luminosity)$Twitter
+Series_Simulation(OpTic, Heretics)$Twitter
+Series_Simulation(Enigma6, Elevate)$Twitter
