@@ -210,11 +210,21 @@ Series('Data/Champs/Champs - 46_carnage_th.csv', '2019-08-15')
 Series('Data/Champs/Champs - 47_eg_og.csv', '2019-08-15')
 Series('Data/Champs/Champs - 48_aspire_heretics.csv', '2019-08-15')
 
-Series_Simulation(eUnited, WaR)$Summary
-Series_Simulation(Splyce, Evil_Geniuses)$Summary
-Series_Simulation(Singularity, Sicario)$Twitter
-Series_Simulation(EnVy, Units)$Twitter
-Series_Simulation(FaZe, Reciprocity)$Twitter
-Series_Simulation(Hundred_Thieves, Luminosity)$Twitter
-Series_Simulation(OpTic, Heretics)$Twitter
-Series_Simulation(Enigma6, Elevate)$Twitter
+# Winners R1
+Series('Data/Champs/Champs - 49_nv_units.csv', '2019-08-16')
+Series('Data/Champs/Champs - 50_sic_sing.csv', '2019-08-16')
+Series('Data/Champs/Champs - 51_eu_war.csv', '2019-08-16')
+Series('Data/Champs/Champs - 52_eg_splyce.csv', '2019-08-16')
+Series('Data/Champs/Champs - 53_faze_rec.csv', '2019-08-16')
+Series('Data/Champs/Champs - 54_100t_lg.csv', '2019-08-16')
+Series('Data/Champs/Champs - 55_elevate_e6.csv', '2019-08-16')
+Series('Data/Champs/Champs - 56_heretics_og.csv', '2019-08-16')
+
+# Losers R1
+
+
+
+Series_Simulation(eUnited, Evil_Geniuses)$Twitter
+Series_Simulation(Sicario, Units)$Summary
+Series_Simulation(Reciprocity, Luminosity)$Twitter
+Series_Simulation(Enigma6, OpTic)$Twitter
