@@ -36,6 +36,7 @@ Series('Data/Pro League/PL - 173_elevate_rec.csv', '2019-07-05')
 Series('Data/Pro League/PL - 174_mid_nv.csv', '2019-07-05')
 Series('Data/Pro League/PL - 175_geng_heretics.csv', '2019-07-05')
 Series('Data/Pro League/PL - 176_eu_og.csv', '2019-07-05')
+
 Series('Data/Miami/Miami - 1_units_lg.csv', '2019-07-19')
 Series('Data/Miami/Miami - 2_mid_elevate.csv', '2019-07-19')
 Series('Data/Miami/Miami - 3_eg_e6.csv', '2019-07-19')
@@ -245,5 +246,22 @@ Series('Data/Champs/Champs - 70_og_rec.csv', '2019-08-17')
 # Losers R3
 Series('Data/Champs/Champs - 71_100t_eg.csv', '2019-08-17')
 Series('Data/Champs/Champs - 72_e6_lg.csv', '2019-08-17')
+
+# Losers R4
+Series('Data/Champs/Champs - 73_100t_rec.csv', '2019-08-18')
+Series('Data/Champs/Champs - 74_e6_units.csv', '2019-08-18')
+
+# Winners Finals
+Series('Data/Champs/Champs - 75_eu_og.csv', '2019-08-18')
+
+# Losers SF
+Series('Data/Champs/Champs - 76_100t_e6.csv', '2019-08-18')
+
+# Losers Finals
+Series('Data/Champs/Champs - 77_100t_og.csv', '2019-08-18')
+
+# Grand Finals
+Series('Data/Champs/Champs - 78_100t_eu.csv', '2019-08-18')
+
 
 
