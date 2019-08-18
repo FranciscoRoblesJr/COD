@@ -221,10 +221,29 @@ Series('Data/Champs/Champs - 55_elevate_e6.csv', '2019-08-16')
 Series('Data/Champs/Champs - 56_heretics_og.csv', '2019-08-16')
 
 # Losers R1
+Series('Data/Champs/Champs - 57_splyce_war.csv', '2019-08-16')
+Series('Data/Champs/Champs - 58_sng_nv.csv', '2019-08-16')
+Series('Data/Champs/Champs - 59_elevate_heretics.csv', '2019-08-16')
+Series('Data/Champs/Champs - 60_100t_faze.csv', '2019-08-16')
+
+# Winners R2
+Series('Data/Champs/Champs - 61_eu_eg.csv', '2019-08-17')
+Series('Data/Champs/Champs - 62_sic_units.csv', '2019-08-17')
+Series('Data/Champs/Champs - 63_lg_rec.csv', '2019-08-17')
+Series('Data/Champs/Champs - 64_e6_og.csv', '2019-08-17')
+
+# Losers R2
+Series('Data/Champs/Champs - 65_100t_sic.csv', '2019-08-17')
+Series('Data/Champs/Champs - 66_elevate_eg.csv', '2019-08-17')
+Series('Data/Champs/Champs - 67_e6_war.csv', '2019-08-17')
+Series('Data/Champs/Champs - 68_lg_sng.csv', '2019-08-17')
+
+# Winners SF
+Series('Data/Champs/Champs - 69_eu_units.csv', '2019-08-17')
+Series('Data/Champs/Champs - 70_og_rec.csv', '2019-08-17')
+
+# Losers R3
+Series('Data/Champs/Champs - 71_100t_eg.csv', '2019-08-17')
+Series('Data/Champs/Champs - 72_e6_lg.csv', '2019-08-17')
 
 
-
-Series_Simulation(eUnited, Evil_Geniuses)$Twitter
-Series_Simulation(Sicario, Units)$Summary
-Series_Simulation(Reciprocity, Luminosity)$Twitter
-Series_Simulation(Enigma6, OpTic)$Twitter
